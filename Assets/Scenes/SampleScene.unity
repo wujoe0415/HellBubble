@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 69268882}
   - component: {fileID: 69268881}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Dialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 579807740}
   - component: {fileID: 579807739}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: MainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
