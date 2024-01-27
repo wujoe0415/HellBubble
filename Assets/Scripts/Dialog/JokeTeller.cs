@@ -80,6 +80,7 @@ public class JokeTeller : MonoBehaviour
             yield return _finishWait;
         }
         yield return null;
+        GameLogic.IsEndDialog = true;
         GenerateOptions(CurrentJoke.Options);
     }
     public void GenerateOptions(Option[] options)

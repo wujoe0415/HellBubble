@@ -11,10 +11,14 @@ public class ResponseSerializer : MonoBehaviour
 
     public GameObject Response;
 
+    public AudioSource Clap;
+    public AudioSource Boring;
+    public AudioSource Boo;
+
     private Vector2[] _offsets = new Vector2[] {
-        new Vector2(70f, 5f),
-        new Vector2(90f, 10f),
-        new Vector2(110f, 20f),
+        new Vector2(700f, 200f),
+        new Vector2(900f, 120f),
+        new Vector2(1000f, 50f),
     };
 
     public void StartResponse(int interest, int insult)
@@ -30,7 +34,7 @@ public class ResponseSerializer : MonoBehaviour
         else if(interest >= 8)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(1);
+                GenerateResponse(0);
             for (int i = 0; i < Random.Range(1, 3); i++)
                 GenerateResponse(3);
             for (int i = 0; i < Random.Range(2, 4); i++)
@@ -39,7 +43,7 @@ public class ResponseSerializer : MonoBehaviour
         else if (interest >= 6)
         {
             for (int i = 0; i < Random.Range(1, 2); i++)
-                GenerateResponse(1);
+                GenerateResponse(0);
             for (int i = 0; i < Random.Range(2, 4); i++)
                 GenerateResponse(3);
             for (int i = 0; i < Random.Range(0, 2); i++)
@@ -48,7 +52,7 @@ public class ResponseSerializer : MonoBehaviour
         else if (interest >= 4)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(1);
+                GenerateResponse(0);
             for (int i = 0; i < Random.Range(2, 4); i++)
                 GenerateResponse(3);
             for (int i = 0; i < Random.Range(2, 4); i++)
@@ -57,7 +61,7 @@ public class ResponseSerializer : MonoBehaviour
         else if (interest >= 2)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(1);
+                GenerateResponse(0);
             for (int i = 0; i < Random.Range(4, 6); i++)
                 GenerateResponse(3);
             for (int i = 0; i < Random.Range(0, 1); i++)
@@ -66,18 +70,92 @@ public class ResponseSerializer : MonoBehaviour
         else
         {
             for (int i = 0; i < Random.Range(6, 8); i++)
-                GenerateResponse(1);
+                GenerateResponse(0);
             for (int i = 0; i < Random.Range(0, 1); i++)
                 GenerateResponse(3);
         }
-        // Insult
 
+        // Insult
+        if (insult == 10)
+        {
+            for (int i = 0; i < Random.Range(0, 2); i++)
+                GenerateResponse(1);
+            for (int i = 0; i < Random.Range(4, 6); i++)
+                GenerateResponse(2);
+        }
+        else if (insult >= 8)
+        {
+            for (int i = 0; i < Random.Range(0, 1); i++)
+                GenerateResponse(0);
+            for (int i = 0; i < Random.Range(1, 3); i++)
+                GenerateResponse(1);
+            for (int i = 0; i < Random.Range(2, 4); i++)
+                GenerateResponse(2);
+        }
+        else if (insult >= 6)
+        {
+            for (int i = 0; i < Random.Range(1, 2); i++)
+                GenerateResponse(0);
+            for (int i = 0; i < Random.Range(2, 4); i++)
+                GenerateResponse(1);
+            for (int i = 0; i < Random.Range(0, 2); i++)
+                GenerateResponse(2);
+        }
+        else if (insult >= 4)
+        {
+            for (int i = 0; i < Random.Range(0, 1); i++)
+                GenerateResponse(0);
+            for (int i = 0; i < Random.Range(2, 4); i++)
+                GenerateResponse(1);
+            for (int i = 0; i < Random.Range(2, 4); i++)
+                GenerateResponse(2);
+        }
+        else if (insult >= 2)
+        {
+            for (int i = 0; i < Random.Range(0, 1); i++)
+                GenerateResponse(0);
+            for (int i = 0; i < Random.Range(4, 6); i++)
+                GenerateResponse(1);
+            for (int i = 0; i < Random.Range(0, 1); i++)
+                GenerateResponse(2);
+        }
+        else
+        {
+            for (int i = 0; i < Random.Range(6, 8); i++)
+                GenerateResponse(0);
+            for (int i = 0; i < Random.Range(0, 1); i++)
+                GenerateResponse(1);
+        }
+        SoundReflection(interest, insult);
+    }
+
+    public void SoundReflection(int interest, int insult)
+    {
+        Clap.volume = interest / 10f;
+        Clap.Play();
+
+        // if boring is bgm
+        if (interest < 5 && insult < 5)
+            BoringBGM(0.8f);
+
+
+        Boo.volume = insult / 10;
+        Clap.Play();
     }
     public void GenerateResponse(int res)
     {
-        int index = Random.Range(0, 2);
+        int index = Random.Range(0, 3);
         GameObject response = Instantiate(Response, Audiences[index]);
-        response.transform.localPosition = _offsets[index];
+        response.transform.localPosition = new Vector3(Random.Range(-_offsets[index].x, _offsets[index].x), Random.Range(_offsets[index].y - 15, _offsets[index].y), 0f);
         response.GetComponent<Image>().sprite = Random.Range(0, 10) > 5 ? LeftBubble[res] : RightBubble[res];
+    }
+
+    private IEnumerator BoringBGM(float sec)
+    {
+        Boring.Stop();
+
+        yield return new WaitForSeconds(sec);
+
+        Boring.Play();
     }
 }
