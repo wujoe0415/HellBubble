@@ -29,6 +29,22 @@ public class ComedyData
     }
 }
 
+public enum PunchlineTag { 
+    child,
+    woman,
+    adult,
+    race,
+    religon,
+    irony,
+    politic,
+    rich,
+    body,
+    self,
+    environment,
+    animal
+}
+
+
 public class JokeManager : MonoBehaviour
 {
     private string _filePath = "jokes";

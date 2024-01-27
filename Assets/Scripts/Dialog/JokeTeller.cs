@@ -48,6 +48,7 @@ public class JokeTeller : MonoBehaviour
     {
         _jokeManager = GetComponent<JokeManager>();
         _rect = GetComponent<RectTransform>();
+        // Animation
         StartJoke();
     }
     
