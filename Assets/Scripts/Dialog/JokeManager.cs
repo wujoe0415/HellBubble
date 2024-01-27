@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 [System.Serializable]
 public class DialogueData
@@ -9,12 +8,12 @@ public class DialogueData
     public string[] stand_up_comedy;
 }
 
-public class DialogImporter : MonoBehaviour
+public class JokeManager : MonoBehaviour
 {
     public TextAsset jsonFile;
     private string filePath = "dialog"; // Replace with the actual path to your JSON file
 
-    public List<string> GetDiaLog()
+    public List<string> GetJokes()
     {
         List<string> dialogLines = new List<string>();
         TextAsset jsonTextAsset = Resources.Load<TextAsset>(filePath);
