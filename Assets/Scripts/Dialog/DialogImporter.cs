@@ -1,43 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[System.Serializable]
-public class DialogueEntry
-{
-    public List<string> stand_up_comedy;
-}
+using static UnityEngine.EventSystems.EventTrigger;
 
 [System.Serializable]
 public class DialogueData
 {
-    public List<DialogueEntry> entries;
+    public string[] stand_up_comedy;
 }
-
 
 public class DialogImporter : MonoBehaviour
 {
     public TextAsset jsonFile;
-    private string filePath = "Assets/Resources/dialog.json"; // Replace with the actual path to your JSON file
+    private string filePath = "dialog"; // Replace with the actual path to your JSON file
 
     public List<string> GetDiaLog()
     {
-        DialogueData dialogData = JsonUtility.FromJson<DialogueData>(jsonFile.text);
-
-        List<string> dialogLines = SplitDialogByLines(dialogData);
-
-        return dialogLines;
-    }
-
-    List<string> SplitDialogByLines(DialogueData dialogData)
-    {
-        List<string> lines = new List<string>();
-
-        foreach (DialogueEntry entry in dialogData.entries)
+        List<string> dialogLines = new List<string>();
+        TextAsset jsonTextAsset = Resources.Load<TextAsset>(filePath);
+        if (jsonTextAsset == null)
         {
-            lines.AddRange(entry.stand_up_comedy);
+            Debug.LogError("JSON file not found. Make sure it's in the Resources folder.");
+            return null;
         }
 
-        return lines;
+        string jsonText = jsonTextAsset.text;
+        DialogueData comedyData = JsonUtility.FromJson<DialogueData>(jsonText);
+
+        if (comedyData != null && comedyData.stand_up_comedy != null)
+        {
+            // Print or use the result as needed
+            foreach (string joke in comedyData.stand_up_comedy)
+            {
+                dialogLines.Add(joke);
+            }
+        }
+        else
+            Debug.LogError("Failed to parse JSON data.");
+
+        return dialogLines;
     }
 }
