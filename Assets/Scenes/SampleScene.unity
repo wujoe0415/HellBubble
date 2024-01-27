@@ -134,8 +134,6 @@ GameObject:
   - component: {fileID: 69268880}
   - component: {fileID: 69268882}
   - component: {fileID: 69268881}
-  - component: {fileID: 69268884}
-  - component: {fileID: 69268883}
   m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
@@ -202,35 +200,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69268879}
   m_CullTransparentMesh: 1
---- !u!114 &69268883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69268879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cbf67a934d7ef4e95881dfe009b788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ToldJokes: 
---- !u!114 &69268884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69268879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32c9446dde965a74ebbe7ed960d73258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OptionCanvas: {fileID: 1790201450}
-  Option: {fileID: 4350768290739769328, guid: b12066bd6e0101f4ca03d29f5a76ac22, type: 3}
-  DialogBox: {fileID: 579807739}
-  TextSpeed: 1
 --- !u!1 &250149174
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +371,8 @@ GameObject:
   - component: {fileID: 555699939}
   - component: {fileID: 555699941}
   - component: {fileID: 555699940}
+  - component: {fileID: 555699942}
+  - component: {fileID: 555699943}
   m_Layer: 5
   m_Name: Comedian
   m_TagString: Untagged
@@ -467,6 +438,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555699938}
   m_CullTransparentMesh: 1
+--- !u!114 &555699942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555699938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c9446dde965a74ebbe7ed960d73258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OptionCanvas: {fileID: 1790201450}
+  Option: {fileID: 4350768290739769328, guid: b12066bd6e0101f4ca03d29f5a76ac22, type: 3}
+  DialogBox: {fileID: 579807739}
+  TextSpeed: 1
+--- !u!114 &555699943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555699938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99cbf67a934d7ef4e95881dfe009b788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToldJokes: 
 --- !u!1 &579807737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2085521949}
   - component: {fileID: 2085521950}
+  - component: {fileID: 2085521951}
   m_Layer: 5
   m_Name: Audience
   m_TagString: Untagged
@@ -1303,3 +1304,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085521948}
   m_CullTransparentMesh: 1
+--- !u!114 &2085521951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085521948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e407878ac18484e47a80314718ae0a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audiences:
+  - {fileID: 1399832345}
+  - {fileID: 723847746}
+  - {fileID: 738942453}
+  LeftBubble:
+  - {fileID: -463927772, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: -482585093, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: 531207484, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: -1753053001, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: 1381640331, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  RightBubble:
+  - {fileID: -1525908447, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: 285331518, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: 298128514, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: 737433886, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  - {fileID: 1859545959, guid: 7334991a1aa21ee4aa00f282129eaa93, type: 3}
+  Response: {fileID: 7960733548573233028, guid: 1cd6b87120ba9014f973985935988bf3, type: 3}

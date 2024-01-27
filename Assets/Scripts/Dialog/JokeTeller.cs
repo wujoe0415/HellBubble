@@ -49,7 +49,7 @@ public class JokeTeller : MonoBehaviour
         _jokeManager = GetComponent<JokeManager>();
         _rect = GetComponent<RectTransform>();
         // Animation
-        StartJoke();
+        //StartJoke();
     }
     
     public void StartJoke()
@@ -86,12 +86,12 @@ public class JokeTeller : MonoBehaviour
     {
         Vector2[] pos = new Vector2[3];
         pos[0] = new Vector2(0f, -200f);
-        pos[1] = new Vector2(200f, 100f);
-        pos[2] = new Vector2(-200f, 100f);
+        pos[1] = new Vector2(500f, 300f);
+        pos[2] = new Vector2(-500f, 100f);
         //Vector2 anchor = GetComponent<RectTransform>().anchoredPosition;
         GameObject bubbleParent = new GameObject("BubbleParent");
         bubbleParent.transform.parent = transform;
-        bubbleParent.transform.localPosition = Vector3.zero;
+        bubbleParent.transform.localPosition = new Vector3(0, 50f, 0f);
         for (int i = 0; i < 3; i++) {
             GameObject bubble = Instantiate(Option, bubbleParent.transform);
             bubble.GetComponent<RectTransform>().anchoredPosition = /*anchor +*/ pos[i];
