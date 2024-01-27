@@ -21,7 +21,6 @@ public class GameLogic : MonoBehaviour
     public void StartGame()
     {
         _isPlaying = true;
-        Comedian.StartJoke();
         _coroutine = GameFlow();
         StartCoroutine(_coroutine);
     }
