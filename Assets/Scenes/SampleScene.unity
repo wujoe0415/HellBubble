@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 69268880}
   - component: {fileID: 69268882}
   - component: {fileID: 69268881}
+  - component: {fileID: 69268884}
+  - component: {fileID: 69268883}
   m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
@@ -200,6 +202,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69268879}
   m_CullTransparentMesh: 1
+--- !u!114 &69268883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69268879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99cbf67a934d7ef4e95881dfe009b788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonFile: {fileID: 4900000, guid: 5ad73fda61e9c86468b6da870a639f09, type: 3}
+--- !u!114 &69268884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69268879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c9446dde965a74ebbe7ed960d73258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogBox: {fileID: 579807739}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +324,7 @@ GameObject:
   - component: {fileID: 579807740}
   - component: {fileID: 579807739}
   m_Layer: 5
-  m_Name: MainText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
