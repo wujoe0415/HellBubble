@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cbf67a934d7ef4e95881dfe009b788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: {fileID: 4900000, guid: 5ad73fda61e9c86468b6da870a639f09, type: 3}
+  ToldJokes: 
 --- !u!114 &69268884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c9446dde965a74ebbe7ed960d73258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogs: []
+  OptionCanvas: {fileID: 1790201450}
+  Option: {fileID: 4350768290739769328, guid: b12066bd6e0101f4ca03d29f5a76ac22, type: 3}
   DialogBox: {fileID: 579807739}
   TextSpeed: 1
 --- !u!1 &519420028

@@ -1,42 +1,78 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
-public class DialogueData
+public class JokeData {
+    public float id;
+    public string type;
+    public string dialog;
+    public string punchline1;
+    public float tag1;
+    public string punchline2;
+    public float tag2;
+    public string punchline3;
+    public float tag3;
+    public string punchline4;
+    public int tag4;
+}
+
+[System.Serializable]
+public class ComedyData
 {
-    public string[] stand_up_comedy;
+    public JokeData[] stand_up_comedy;
+    public ComedyData(JokeData[] jokes)
+    {
+        stand_up_comedy = jokes;
+    }
 }
 
 public class JokeManager : MonoBehaviour
 {
-    public TextAsset jsonFile;
-    private string filePath = "dialog"; // Replace with the actual path to your JSON file
+    private string _filePath = "jokes";
+    public List<int> ToldJokes = new List<int>();
 
-    public List<string> GetJokes()
+    private ComedyData _comedyDataBase;
+
+    public void Start()
     {
-        List<string> dialogLines = new List<string>();
-        TextAsset jsonTextAsset = Resources.Load<TextAsset>(filePath);
+        InitJokes();
+        ToldJokes = new List<int>();
+    }
+    public void InitJokes()
+    {
+        TextAsset jsonTextAsset = Resources.Load<TextAsset>(_filePath);
         if (jsonTextAsset == null)
         {
             Debug.LogError("JSON file not found. Make sure it's in the Resources folder.");
-            return null;
+            return;
         }
 
         string jsonText = jsonTextAsset.text;
-        DialogueData comedyData = JsonUtility.FromJson<DialogueData>(jsonText);
+        _comedyDataBase = JsonUtility.FromJson<ComedyData>("{\"stand_up_comedy\":" + jsonTextAsset.text + "}");
 
-        if (comedyData != null && comedyData.stand_up_comedy != null)
+        if (_comedyDataBase != null && _comedyDataBase.stand_up_comedy != null)
         {
             // Print or use the result as needed
-            foreach (string joke in comedyData.stand_up_comedy)
-            {
-                dialogLines.Add(joke);
-            }
+            foreach (JokeData joke in _comedyDataBase.stand_up_comedy)
+                Debug.Log(joke.dialog);
         }
         else
             Debug.LogError("Failed to parse JSON data.");
 
-        return dialogLines;
+    }
+    public Joke GetJoke()
+    {
+        int index = UnityEngine.Random.Range(0, 2);
+        while(ToldJokes.Contains(index))
+        {
+            index = UnityEngine.Random.Range(0, 2);
+            continue;
+        }
+        ToldJokes.Add(index);
+        Joke j = new Joke(_comedyDataBase.stand_up_comedy[index]);
+        return j;
     }
 }

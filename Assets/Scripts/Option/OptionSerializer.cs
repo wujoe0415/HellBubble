@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class OptionSerializer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Text Content;
     private Option _option = null;
+    public Action OnClick;
     public void SerializeOption(Option o)
     {
         _option = o;
-        Content.text = _option.content;
+        Content.text = _option.Content;
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -24,6 +26,7 @@ public class OptionSerializer : MonoBehaviour, IPointerEnterHandler, IPointerExi
     }
     public void OnPointerClick(PointerEventData pointerEventData)
     {
+        OnClick?.Invoke();
         Debug.Log(name + " Game Object Clicked!");
     }
 }
