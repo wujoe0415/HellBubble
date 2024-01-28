@@ -16,9 +16,9 @@ public class ReactionSerializer : MonoBehaviour
     public AudioSource Boo;
 
     private Vector2[] _offsets = new Vector2[] {
-        new Vector2(700f, 200f),
-        new Vector2(900f, 120f),
-        new Vector2(1000f, 50f),
+        new Vector2(700f, 300f),
+        new Vector2(900f, 200f),
+        new Vector2(1000f, 120f),
     };
 
     public void StartReaction(int interest, int insult)

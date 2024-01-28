@@ -9,7 +9,7 @@ public class Reaction : MonoBehaviour
 
     private void OnEnable()
     {
-        float scaler = Random.Range(0.8f, 1f);
+        float scaler = Random.Range(0.4f, 0.8f);
         transform.localScale = Vector3.one * scaler;
         _image = GetComponent<Image>();
         _image.enabled = false;
