@@ -46,7 +46,6 @@ public class JokeTeller : MonoBehaviour
     private Vector2 initSize = Vector2.one;
 
     private Animator _an;
-    private IEnumerator _talkAnimation;
 
     private void Start()
     {
@@ -77,8 +76,7 @@ public class JokeTeller : MonoBehaviour
         int layer = 0;
         DialogBox.sizeDelta = initSize;
 
-        _talkAnimation = Talk();
-        StartCoroutine(_talkAnimation);
+        Talk();
         _an.SetBool("handup", true);
 
         for (int i = 0; i < punchline.Length; i++)
@@ -91,7 +89,6 @@ public class JokeTeller : MonoBehaviour
                 DialogBox.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
             }
         }
-        StopCoroutine(_talkAnimation);
         EndTalk();
         _an.SetBool("handup", false);
 
@@ -108,9 +105,7 @@ public class JokeTeller : MonoBehaviour
         WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
         DialogBox.sizeDelta = initSize;
         
-        _talkAnimation = Talk();
-        StartCoroutine(_talkAnimation);
-
+        Talk();
 
         foreach (string dialog in CurrentJoke.Dialogs)
         {
@@ -144,7 +139,6 @@ public class JokeTeller : MonoBehaviour
         GameLogic.IsEndDialog = true;
         GenerateOptions(CurrentJoke.Options);
 
-        StopCoroutine(_talkAnimation);
         EndTalk();
     }
     public void GenerateOptions(Option[] options)
@@ -161,13 +155,9 @@ public class JokeTeller : MonoBehaviour
     {
         _an.SetBool("talk", false);
     }
-    private IEnumerator Talk()
+    private void Talk()
     {
-        WaitForSeconds w = new WaitForSeconds(0.2f);
-        while (true)
-        {
-            _an.SetBool("talk", !_an.GetBool("talk"));
-            yield return w;
-        }
+
+        _an.SetBool("talk", true);
     }
 }
