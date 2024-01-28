@@ -11,7 +11,7 @@ public class GameLogic : MonoBehaviour
     public static bool IsEndGame = false;
 
 
-    public float GameDuration = 300f;
+    public float GameDuration = 180f;
     private float _currentDuration = 0f;
     private bool _isPlaying = false;
 
@@ -69,7 +69,7 @@ public class GameLogic : MonoBehaviour
         bool isHell = false;
         while (!IsEndGame && _maxRound > _currentRound )
         {
-            if (!(Bar.GoodCurrentValue > 0))
+            if (!(Bar.GoodCurrentValue > 0) || Bar.GoodCurrentValue < Bar.BadCurrentValue)
             {
                 isHell = true;
                 break;
