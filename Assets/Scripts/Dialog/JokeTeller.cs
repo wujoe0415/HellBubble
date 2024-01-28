@@ -86,25 +86,11 @@ public class JokeTeller : MonoBehaviour
     }
     public void GenerateOptions(Option[] options)
     {
-        PopManager.Instance.Show(
-            new PopData(),
-            new PopData(),
-            new PopData()
-        );
-     
-        Vector2[] pos = new Vector2[3];
-        pos[0] = new Vector2(0f, -200f);
-        pos[1] = new Vector2(500f, 300f);
-        pos[2] = new Vector2(-500f, 100f);
-        //Vector2 anchor = GetComponent<RectTransform>().anchoredPosition;
-        GameObject bubbleParent = new GameObject("BubbleParent");
-        bubbleParent.transform.parent = transform;
-        bubbleParent.transform.localPosition = new Vector3(0, 50f, 0f);
+        PopData[] popDatas= new PopData[3];
         for (int i = 0; i < 3; i++) {
-            GameObject bubble = Instantiate(Option, bubbleParent.transform);
-            bubble.GetComponent<RectTransform>().anchoredPosition = /*anchor +*/ pos[i];
-            bubble.GetComponent<OptionSerializer>().SerializeOption(options[i]);
+            popDatas[i] = new PopData(options[i].Content, options[i].SatisfyAmount, options[i].DevilAmount, (PopTypeEnum)i + 1);
             //bubble.GetComponent<OptionSerializer>().OnClick += () => { StartJoke(); };
-        } 
+        }
+        PopManager.Instance.Show(popDatas[0], popDatas[1], popDatas[2]);
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class GameLogic : MonoBehaviour
 {
     public static bool IsEndDialog = false;
+    public static bool IsEndChoice = false;
     public static bool IsEndGame = false;
 
 
@@ -68,7 +69,10 @@ public class GameLogic : MonoBehaviour
             IsEndDialog= false;
 
             // MakeChoice
-            
+            while (!IsEndChoice)
+                yield return null;
+            IsEndChoice= false;
+            Debug.Log("is end choice");
             Response.StartReaction(10, 5);
             yield return blank;
         }

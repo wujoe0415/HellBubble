@@ -46,6 +46,7 @@ public class PopManager : MonoBehaviour
     public void Close()
     {
         OnClose();
+        GameLogic.IsEndChoice = true;
     }
 
     public void OnClose(PopTypeEnum popType = PopTypeEnum.None)
