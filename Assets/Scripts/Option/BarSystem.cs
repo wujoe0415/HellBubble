@@ -14,10 +14,10 @@ public class BarSystem : MonoBehaviour
 
     private int GoodMaxValue = 100;
     public int GoodCurrentValue = 100;
-    private int GoodStartValue = 20;
+    private int GoodStartValue = 1;
     private int BadMaxValue = 100;
     public int BadCurrentValue = 100;
-    private int BadStartValue = 20;
+    private int BadStartValue = 1;
     private Vector2 GoodArrowCurrentPos = Vector2.zero;
     private Vector2 BadArrowCurrentPos = Vector2.zero;
 
