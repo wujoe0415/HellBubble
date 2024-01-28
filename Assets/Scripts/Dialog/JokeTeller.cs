@@ -43,10 +43,12 @@ public class JokeTeller : MonoBehaviour
 
     [Range(0.1f, 3f)]
     public float TextSpeed = 1f;
+    private Vector2 initSize = Vector2.one;
 
     private void Start()
     {
         _jokeManager = GetComponent<JokeManager>();
+        initSize = DialogBox.sizeDelta;
         // Animation
         //StartJoke();
     }
@@ -66,7 +68,6 @@ public class JokeTeller : MonoBehaviour
     {
         WaitForSeconds _finishWait = new WaitForSeconds(1f);
         WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
-        Vector2 initSize = DialogBox.sizeDelta;
 
         DialogText.text = null;
         int layer = 0;
@@ -91,7 +92,7 @@ public class JokeTeller : MonoBehaviour
     {
         WaitForSeconds _finishWait = new WaitForSeconds(1f);
         WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
-        Vector2 initSize = DialogBox.sizeDelta;
+        DialogBox.sizeDelta = initSize;
         foreach(string dialog in CurrentJoke.Dialogs)
         {
             DialogText.text = null;
@@ -110,8 +111,17 @@ public class JokeTeller : MonoBehaviour
             yield return _finishWait;
         }
         yield return new WaitForSeconds(1f);
-        DialogText.text = "...";
+
+        int dlayer = -1;
+        DialogText.text = null;
         DialogBox.sizeDelta = initSize;
+        foreach (string dialog in CurrentJoke.Dialogs)
+        {
+            DialogText.text += dialog + "\n";
+            dlayer += dialog.Length / 24 + 1;
+            DialogBox.sizeDelta = initSize + new Vector2(0f, 0f + dlayer * 50f); 
+        }
+        DialogText.text = DialogText.text.Substring(0, DialogText.text.Length - 1);
         GameLogic.IsEndDialog = true;
         GenerateOptions(CurrentJoke.Options);
     }
