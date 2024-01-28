@@ -32,9 +32,8 @@ public class GameLogic : MonoBehaviour
     }
     public void Start()
     {
-        //Invoke("StartGame", 3f);
+        Invoke("StartGame", 2f);
         OnEndGame.AddListener(() => { IsEndGame = true; });
-        StartGame();
     }
     public void StartGame()
     {
