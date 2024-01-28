@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static PopManager;
 
 public class Joke
 {
@@ -34,12 +35,11 @@ public class Option {
 }
 public class JokeTeller : MonoBehaviour
 {
-    public Canvas OptionCanvas;
     public GameObject Option;
     private JokeManager _jokeManager;
     public Joke CurrentJoke;
-    public Text DialogBox;
-    private RectTransform _rect;
+    public Text DialogText;
+    public RectTransform DialogBox;
 
     [Range(0.1f, 3f)]
     public float TextSpeed = 1f;
@@ -47,57 +47,81 @@ public class JokeTeller : MonoBehaviour
     private void Start()
     {
         _jokeManager = GetComponent<JokeManager>();
-        _rect = GetComponent<RectTransform>();
         // Animation
         //StartJoke();
     }
     
     public void StartJoke()
     {
+        DialogText.text = "";
         CurrentJoke = _jokeManager.GetJoke();
         StartCoroutine(StartDialog(CurrentJoke.Dialogs));
+    }
+    public void Punchline(string punchline)
+    {
+        DialogText.text = "";
+        StartCoroutine(StartPunchline(punchline));
+    }
+    public IEnumerator StartPunchline(string punchline)
+    {
+        WaitForSeconds _finishWait = new WaitForSeconds(1f);
+        WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
+        Vector2 initSize = DialogBox.sizeDelta;
+
+        DialogText.text = null;
+        int layer = 0;
+        DialogBox.sizeDelta = initSize;
+        for (int i = 0; i < punchline.Length; i++)
+        {
+            DialogText.text = punchline.Substring(0, i + 1);
+            yield return _finishText;
+            if (i / 24 != layer)
+            {
+                layer++;
+                DialogBox.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
+            }
+        }
+        yield return _finishWait;
+        yield return new WaitForSeconds(0.5f);
+        DialogText.text = "";
+        DialogBox.sizeDelta = initSize;
+        GameLogic.IsEndChoice = true;
     }
     public IEnumerator StartDialog(string[] dialogs)
     {
         WaitForSeconds _finishWait = new WaitForSeconds(1f);
         WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
-        Vector2 initSize = _rect.sizeDelta;
+        Vector2 initSize = DialogBox.sizeDelta;
         foreach(string dialog in CurrentJoke.Dialogs)
         {
-            DialogBox.text = null;
+            DialogText.text = null;
             int layer = 0;
-            _rect.sizeDelta = initSize;
+            DialogBox.sizeDelta = initSize;
             for (int i = 0; i < dialog.Length; i++)
             {
-                DialogBox.text = dialog.Substring(0, i+1);
+                DialogText.text = dialog.Substring(0, i+1);
                 yield return _finishText;
                 if(i/24 != layer)
                 {
                     layer++;
-                    _rect.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
+                    DialogBox.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
                 }
             }
             yield return _finishWait;
         }
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        DialogText.text = "...";
+        DialogBox.sizeDelta = initSize;
         GameLogic.IsEndDialog = true;
         GenerateOptions(CurrentJoke.Options);
     }
     public void GenerateOptions(Option[] options)
     {
-        Vector2[] pos = new Vector2[3];
-        pos[0] = new Vector2(0f, -200f);
-        pos[1] = new Vector2(500f, 300f);
-        pos[2] = new Vector2(-500f, 100f);
-        //Vector2 anchor = GetComponent<RectTransform>().anchoredPosition;
-        GameObject bubbleParent = new GameObject("BubbleParent");
-        bubbleParent.transform.parent = transform;
-        bubbleParent.transform.localPosition = new Vector3(0, 50f, 0f);
+        PopData[] popDatas= new PopData[3];
         for (int i = 0; i < 3; i++) {
-            GameObject bubble = Instantiate(Option, bubbleParent.transform);
-            bubble.GetComponent<RectTransform>().anchoredPosition = /*anchor +*/ pos[i];
-            bubble.GetComponent<OptionSerializer>().SerializeOption(options[i]);
+            popDatas[i] = new PopData(options[i].Content, options[i].SatisfyAmount, options[i].DevilAmount, (PopTypeEnum)i + 1);
             //bubble.GetComponent<OptionSerializer>().OnClick += () => { StartJoke(); };
-        } 
+        }
+        PopManager.Instance.Show(popDatas[0], popDatas[1], popDatas[2]);
     }
 }
