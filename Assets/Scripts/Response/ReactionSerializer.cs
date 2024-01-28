@@ -16,15 +16,14 @@ public class ReactionSerializer : MonoBehaviour
     public AudioSource Boo;
 
     private Vector2[] _offsets = new Vector2[] {
-        new Vector2(700f, 300f),
-        new Vector2(900f, 200f),
-        new Vector2(1000f, 180f),
+        new Vector2(750f, 330f),
+        new Vector2(850f, 300f),
+        new Vector2(900f, 280f),
     };
-
     public void StartReaction(int interest, int insult)
     {
         // Interest
-        if(interest == 10)
+        if (interest == 10)
         {
             for (int i = 0; i < Random.Range(0, 2); i++)
                 GenerateReaction(3);
@@ -156,6 +155,7 @@ public class ReactionSerializer : MonoBehaviour
     {
         int index = Random.Range(0, 3);
         GameObject response = Instantiate(Response, Audiences[index]);
+        Random.InitState(Random.Range(200, 1000));
         response.transform.localPosition = new Vector3(Random.Range(-_offsets[index].x, _offsets[index].x), Random.Range(_offsets[index].y - 50, _offsets[index].y), 0f);
         response.GetComponent<Image>().sprite = Random.Range(0, 10) > 5 ? LeftBubble[res] : RightBubble[res];
     }

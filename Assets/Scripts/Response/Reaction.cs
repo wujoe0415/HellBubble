@@ -18,25 +18,25 @@ public class Reaction : MonoBehaviour
 
     private IEnumerator StartLife()
     {
-        yield return new WaitForSeconds(Random.Range(0.4f, 0.8f));
+        yield return new WaitForSeconds(Random.Range(0.2f, 1.2f));
         _image.enabled = true;
         Vector3 init = transform.position;
-        Vector3 targetPosition = init + new Vector3(0f, 10f, 0f);
+        Vector3 targetPosition = init + new Vector3(0f, Random.Range(1.0f, 2.5f), 0f);
         
         Color initColor = _image.color;
         initColor.a = 0f;
         Color targetColor = initColor;
-        targetColor.a = 255f;
-        float time = Random.Range(0.5f, 1f);
+        targetColor.a = 1f;
+        float time = Random.Range(0.8f, 1f);
         for (float f = 0f; f < time; f+= Time.deltaTime)
         {
             transform.position = Vector3.Lerp(init, targetPosition, f / time);
-            _image.color = Color.Lerp(initColor, targetColor, f / 0.5f);
+            _image.color = Color.Lerp(initColor, targetColor, f / 0.8f);
             yield return null;
         }
         yield return new WaitForSeconds(1f);
         initColor = _image.color;
-        initColor.a = 255f;
+        initColor.a = 1f;
         targetColor = initColor;
         targetColor.a = 0f;
         time = Random.Range(0.5f, 0.8f);

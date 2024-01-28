@@ -987,6 +987,7 @@ GameObject:
   - component: {fileID: 326299056}
   - component: {fileID: 326299055}
   - component: {fileID: 326299057}
+  - component: {fileID: 326299058}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1040,6 +1041,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeImage: {fileID: 2035622177}
+--- !u!114 &326299058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326299054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f98f103e61e1e843a2157e051ad6553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeCanvas: {fileID: 326299057}
 --- !u!1 &519389662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,7 +3481,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 55

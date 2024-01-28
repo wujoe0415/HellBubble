@@ -8,6 +8,9 @@ public class SceneStarter : MonoBehaviour
 
     private void Awake()
     {
+        Color color = FadeCanvas.FadeImage.color;
+        color.a = 1;
+        FadeCanvas.FadeImage.color = color;
         FadeCanvas.FadeOut();
     }
 }
