@@ -9,22 +9,22 @@ public class Audience : MonoBehaviour
     public static List<WeightScore> s_Weights = new List<WeightScore>();
 
     float[] interests = new float[] {
-        1, 1, 1.5f, 1, 1, -1, 2, 1, 1, -1, -1, 0,
-        0, -1, 1, 0.5f, 0.5f, 0.5f, 0, 1, 1, 2, 1.5f, 2,
-        0, 0, 1.5f, -1, 1, 2, 1.5f, 2, 0.5f, 0.5f, 1, 1,
-        -1, -1, -1, 2, 2, 1, 1, 1.5f, 0, 2, 2, 2,
-        2, 2, 1, 1, 0, 2, 0, -0.5f, 2, 2, -1, -1,
-        1.5f, 1.5f, 2, 0, 0, 0, 2, 1, 0, 1, 1, 0,
-        0.5f, 0.5f, 0.5f, 1, 1, 1, 1, 2, 2, 1.5f, 1, 1
+        1, 1, 1.5f, 1, 1, -1, 2, 1, 1, 1, 1, 1,
+        1, -1, 1, 1.5f, 1.5f, 1.5f, -1.5f, 1, -1, 2, 1, 2,
+        1, 1, 1.5f, -1, 1, 2, 1.5f, 2, 1.5f, 1.5f, 1, 1,
+        -1, -1, -1, 2, 2, 1, 1, 1.5f, -1.5f, 2, 1, 2,
+        2, 2, 1.7f, 2, 1.2f, 2, 1.2f, -1.5f, 2, 1.5f, 1, -1,
+        1.5f, 1.5f, 2, 1, -1, 1, 2, 1, -1, 1, 1, 1,
+        1.5f, 1.5f, 1.5f, 1, 1, 1, 1.5f, 2, 2, 1.5f, 1, 1
     };
     float[] insults = new float[] {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        1, 1.5f, 1, 0.5f, 0.5f, 0.5f, 0, 1, 1, 0, 0, 0,
-        0, 0, 2, 2, 1, 0.5f, 0, 0, 0, 0, 2, 0,
-        1, 1, 0.5f, 1, 0.5f, 1, 0.5f, 1, 1, 0, 0.5f, 1,
-        0, 0, 0, 0, 0, 1.5f, 0.5f, 0.5f, 1, 1.5f, 0.5f, 0,
-        0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-        1, 0.5f, 0, 0.5f, 0.5f, 0.5f, 0, 0, 0, 0, 1, 0
+        1, 1, 1, 1.5f, 1, 1, 2, 1, 1, 2, 1, 2 ,
+        1, 1.5f, 1, 1.5f, 1.5f, 1.5f, 1, 1, 1, 1, 1, 1 ,
+        1, 1, 2, 2, 1, 1.5f, 1, 1, 1, 1, 2, 1 ,
+        1, 1, 1.5f, 1, 1.5f, 1, 1.5f, 1, 1, 1, 1.5f, 1 ,
+        1, 1, 1, 1, 1, 1.5f, 1.5f, 1.5f, 1, 1.5f, 1.5f, 1 ,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,    
+        1, 1.5f, 1, 1.5f, 1.5f, 1.5f, 1, 1, 1, 1, 1, 1
     };
     public enum AudienceTag
     {
@@ -50,11 +50,13 @@ public class Audience : MonoBehaviour
     public static int CurrentAudienceTag;
     private void Awake()
     {
+        s_Weights.Clear();
         for (int i = 0; i < 7; i++)
         {
             s_Weights.Add(new WeightScore(interests.Skip(12 * i).Take(12 * (i + 1) - 1).ToArray(), insults.Skip(12 * i).Take(12 * (i + 1) - 1).ToArray()));
         }
         CurrentAudienceTag = Random.Range(0, 7);
+        Debug.Log(CurrentAudienceTag);
     }
     public static float[] InterestsWeight
     {

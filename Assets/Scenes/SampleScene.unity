@@ -1861,9 +1861,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8840ff1a989715847aa50e2dd7e0263c, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 844f92a23620c614fbb4313430dad272, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.937
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2370,9 +2370,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5c2022eaa307c7248aa3c52ee8f590d8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5b1f3e635b0f96b41b241b988c4f488c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.648
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2467,6 +2467,7 @@ GameObject:
   - component: {fileID: 2085521949}
   - component: {fileID: 2085521950}
   - component: {fileID: 2085521951}
+  - component: {fileID: 2085521952}
   m_Layer: 5
   m_Name: Audience
   m_TagString: Untagged
@@ -2538,6 +2539,18 @@ MonoBehaviour:
   Clap: {fileID: 1922164524}
   Boring: {fileID: 818155102}
   Boo: {fileID: 1693681862}
+--- !u!114 &2085521952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085521948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784c170ceae33324a8cf353a21270f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2141277764
 GameObject:
   m_ObjectHideFlags: 0

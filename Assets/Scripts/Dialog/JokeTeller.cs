@@ -15,23 +15,23 @@ public class Joke
     {
         Dialogs = data.dialog.Split(new string[] { "|||" }, StringSplitOptions.None);
         Options = new Option[4];
-        Options[0] = new Option(data.punchline1, Convert.ToInt32(data.tag1));
-        Options[1] = new Option(data.punchline2, Convert.ToInt32(data.tag2));
-        Options[2] = new Option(data.punchline3, Convert.ToInt32(data.tag3));
-        Options[3] = new Option(data.punchline4, Convert.ToInt32(data.tag4));
+        Options[0] = new Option(data.punchline1, data.tag1, data.fun1, data.insult1);
+        Options[1] = new Option(data.punchline2, data.tag2, data.fun2, data.insult2);
+        Options[2] = new Option(data.punchline3, data.tag3, data.fun3, data.insult3);
+        Options[3] = new Option(data.punchline4, data.tag4, data.fun4, data.insult4);
     }
 }
 public class Option {
-    public Option(string content, int tag){
+    public Option(string content, string tag, int fun, int devil){
         Content = content;
         Tag = tag;
-        DevilAmount = 0;
-        SatisfyAmount = 1;
+        SatisfyAmount = fun;
+        DevilAmount = devil;
     }
     public string Content;
-    public int Tag;
-    public int DevilAmount;
+    public string Tag;
     public int SatisfyAmount;
+    public int DevilAmount;
 }
 public class JokeTeller : MonoBehaviour
 {
@@ -145,7 +145,7 @@ public class JokeTeller : MonoBehaviour
     {
         PopData[] popDatas= new PopData[3];
         for (int i = 0; i < 3; i++) {
-            popDatas[i] = new PopData(options[i].Content, options[i].SatisfyAmount, options[i].DevilAmount, (PopTypeEnum)i + 1);
+            popDatas[i] = new PopData(options[i].Content, options[i].SatisfyAmount * Audience.InterestsWeight[(JokeManager.stringIndexMap[options[i].Tag])], options[i].DevilAmount * Audience.InsultsWeight[(JokeManager.stringIndexMap[options[i].Tag])], (PopTypeEnum)i + 1);
             //bubble.GetComponent<OptionSerializer>().OnClick += () => { StartJoke(); };
         }
         PopManager.Instance.Show(popDatas[0], popDatas[1], popDatas[2]);

@@ -7,17 +7,25 @@ using UnityEngine;
 
 [System.Serializable]
 public class JokeData {
-    public float id;
+    public int id;
     public string type;
     public string dialog;
     public string punchline1;
-    public float tag1;
+    public int fun1;
+    public int insult1;
+    public string tag1;
     public string punchline2;
-    public float tag2;
+    public int fun2;
+    public int insult2;
+    public string tag2;
     public string punchline3;
-    public float tag3;
+    public int fun3;
+    public int insult3;
+    public string tag3;
     public string punchline4;
-    public int tag4;
+    public int fun4;
+    public int insult4;
+    public string tag4;
 }
 
 [System.Serializable]
@@ -46,6 +54,7 @@ public enum PunchlineTag {
 }
 
 
+
 public class JokeManager : MonoBehaviour
 {
     private string _filePath = "jokes";
@@ -53,11 +62,17 @@ public class JokeManager : MonoBehaviour
     private List<int> _untoldJokes = new List<int>();
 
     private ComedyData _comedyDataBase;
+    private string[] stringsArray = { "child", "woman", "adult", "race", "religion", "irony", "politic", "rich", "body", "self", "environment", "animal" };
+
+    // Create a dictionary mapping strings to their index
+    public static Dictionary<string, int> stringIndexMap = new Dictionary<string, int>();
 
     public void Start()
     {
         InitJokes();
         ToldJokes = new List<int>();
+        for (int i = 0; i < stringsArray.Length; i++)
+            stringIndexMap[stringsArray[i]] = i;
     }
     public void InitJokes()
     {

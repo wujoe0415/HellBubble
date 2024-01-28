@@ -141,7 +141,7 @@ public class ReactionSerializer : MonoBehaviour
 
 
         Boo.volume = insult / 10;
-        Clap.Play();
+        Boo.Play();
     }
     public void GroupReaction(int interest, int insult)
     {

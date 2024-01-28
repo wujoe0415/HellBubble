@@ -37,7 +37,6 @@ public class GameLogic : MonoBehaviour
     }
     public void StartGame()
     {
-        Debug.Log("Start Game");
         _isPlaying = true;
         AlarmManager.SetMaxValue(GameDuration);
         OnStartGame.Invoke();

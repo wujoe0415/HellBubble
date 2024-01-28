@@ -101,6 +101,13 @@ public class PopManager : MonoBehaviour
             BadValue = set_bad_value;
             PopType = set_popType;
         }
+        public PopData(string set_text, float set_good_value, float set_bad_value, PopTypeEnum set_popType)
+        {
+            Text_value = set_text;
+            GoodValue = Convert.ToInt32(set_good_value);
+            BadValue = Convert.ToInt32(set_bad_value);
+            PopType = set_popType;
+        }
     }
 
     public enum PopTypeEnum
