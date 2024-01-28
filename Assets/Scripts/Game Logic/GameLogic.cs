@@ -32,11 +32,13 @@ public class GameLogic : MonoBehaviour
     }
     public void Start()
     {
-        StartGame();
+        //Invoke("StartGame", 3f);
         OnEndGame.AddListener(() => { IsEndGame = true; });
+        StartGame();
     }
     public void StartGame()
     {
+        Debug.Log("Start Game");
         _isPlaying = true;
         AlarmManager.SetMaxValue(GameDuration);
         OnStartGame.Invoke();

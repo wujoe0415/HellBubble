@@ -18,7 +18,7 @@ public class ReactionSerializer : MonoBehaviour
     private Vector2[] _offsets = new Vector2[] {
         new Vector2(700f, 300f),
         new Vector2(900f, 200f),
-        new Vector2(1000f, 120f),
+        new Vector2(1000f, 180f),
     };
 
     public void StartReaction(int interest, int insult)
@@ -156,7 +156,7 @@ public class ReactionSerializer : MonoBehaviour
     {
         int index = Random.Range(0, 3);
         GameObject response = Instantiate(Response, Audiences[index]);
-        response.transform.localPosition = new Vector3(Random.Range(-_offsets[index].x, _offsets[index].x), Random.Range(_offsets[index].y - 15, _offsets[index].y), 0f);
+        response.transform.localPosition = new Vector3(Random.Range(-_offsets[index].x, _offsets[index].x), Random.Range(_offsets[index].y - 50, _offsets[index].y), 0f);
         response.GetComponent<Image>().sprite = Random.Range(0, 10) > 5 ? LeftBubble[res] : RightBubble[res];
     }
 

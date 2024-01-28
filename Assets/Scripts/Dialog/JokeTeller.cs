@@ -45,10 +45,14 @@ public class JokeTeller : MonoBehaviour
     public float TextSpeed = 1f;
     private Vector2 initSize = Vector2.one;
 
+    private Animator _an;
+    private IEnumerator _talkAnimation;
+
     private void Start()
     {
         _jokeManager = GetComponent<JokeManager>();
         initSize = DialogBox.sizeDelta;
+        _an = GetComponent<Animator>();
         // Animation
         //StartJoke();
     }
@@ -72,6 +76,11 @@ public class JokeTeller : MonoBehaviour
         DialogText.text = null;
         int layer = 0;
         DialogBox.sizeDelta = initSize;
+
+        _talkAnimation = Talk();
+        StartCoroutine(_talkAnimation);
+        _an.SetBool("handup", true);
+
         for (int i = 0; i < punchline.Length; i++)
         {
             DialogText.text = punchline.Substring(0, i + 1);
@@ -82,18 +91,28 @@ public class JokeTeller : MonoBehaviour
                 DialogBox.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
             }
         }
+        StopCoroutine(_talkAnimation);
+        EndTalk();
+        _an.SetBool("handup", false);
+
         yield return _finishWait;
         yield return new WaitForSeconds(0.5f);
         DialogText.text = "";
         DialogBox.sizeDelta = initSize;
         GameLogic.IsEndChoice = true;
+
     }
     public IEnumerator StartDialog(string[] dialogs)
     {
         WaitForSeconds _finishWait = new WaitForSeconds(1f);
         WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
         DialogBox.sizeDelta = initSize;
-        foreach(string dialog in CurrentJoke.Dialogs)
+        
+        _talkAnimation = Talk();
+        StartCoroutine(_talkAnimation);
+
+
+        foreach (string dialog in CurrentJoke.Dialogs)
         {
             DialogText.text = null;
             int layer = 0;
@@ -124,6 +143,9 @@ public class JokeTeller : MonoBehaviour
         DialogText.text = DialogText.text.Substring(0, DialogText.text.Length - 1);
         GameLogic.IsEndDialog = true;
         GenerateOptions(CurrentJoke.Options);
+
+        StopCoroutine(_talkAnimation);
+        EndTalk();
     }
     public void GenerateOptions(Option[] options)
     {
@@ -133,5 +155,19 @@ public class JokeTeller : MonoBehaviour
             //bubble.GetComponent<OptionSerializer>().OnClick += () => { StartJoke(); };
         }
         PopManager.Instance.Show(popDatas[0], popDatas[1], popDatas[2]);
+    }
+
+    private void EndTalk()
+    {
+        _an.SetBool("talk", false);
+    }
+    private IEnumerator Talk()
+    {
+        WaitForSeconds w = new WaitForSeconds(0.2f);
+        while (true)
+        {
+            _an.SetBool("talk", !_an.GetBool("talk"));
+            yield return w;
+        }
     }
 }
