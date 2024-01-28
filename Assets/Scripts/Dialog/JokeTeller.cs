@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static PopManager;
 
 public class Joke
 {
@@ -85,6 +86,12 @@ public class JokeTeller : MonoBehaviour
     }
     public void GenerateOptions(Option[] options)
     {
+        PopManager.Instance.Show(
+            new PopData(),
+            new PopData(),
+            new PopData()
+        );
+     
         Vector2[] pos = new Vector2[3];
         pos[0] = new Vector2(0f, -200f);
         pos[1] = new Vector2(500f, 300f);
