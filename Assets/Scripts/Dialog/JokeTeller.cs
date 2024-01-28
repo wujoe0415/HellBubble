@@ -35,12 +35,11 @@ public class Option {
 }
 public class JokeTeller : MonoBehaviour
 {
-    public Canvas OptionCanvas;
     public GameObject Option;
     private JokeManager _jokeManager;
     public Joke CurrentJoke;
-    public Text DialogBox;
-    private RectTransform _rect;
+    public Text DialogText;
+    public RectTransform DialogBox;
 
     [Range(0.1f, 3f)]
     public float TextSpeed = 1f;
@@ -48,39 +47,71 @@ public class JokeTeller : MonoBehaviour
     private void Start()
     {
         _jokeManager = GetComponent<JokeManager>();
-        _rect = GetComponent<RectTransform>();
         // Animation
         //StartJoke();
     }
     
     public void StartJoke()
     {
+        DialogText.text = "";
         CurrentJoke = _jokeManager.GetJoke();
         StartCoroutine(StartDialog(CurrentJoke.Dialogs));
+    }
+    public void Punchline(string punchline)
+    {
+        DialogText.text = "";
+        StartCoroutine(StartPunchline(punchline));
+    }
+    public IEnumerator StartPunchline(string punchline)
+    {
+        WaitForSeconds _finishWait = new WaitForSeconds(1f);
+        WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
+        Vector2 initSize = DialogBox.sizeDelta;
+
+        DialogText.text = null;
+        int layer = 0;
+        DialogBox.sizeDelta = initSize;
+        for (int i = 0; i < punchline.Length; i++)
+        {
+            DialogText.text = punchline.Substring(0, i + 1);
+            yield return _finishText;
+            if (i / 24 != layer)
+            {
+                layer++;
+                DialogBox.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
+            }
+        }
+        yield return _finishWait;
+        yield return new WaitForSeconds(0.5f);
+        DialogText.text = "";
+        DialogBox.sizeDelta = initSize;
+        GameLogic.IsEndChoice = true;
     }
     public IEnumerator StartDialog(string[] dialogs)
     {
         WaitForSeconds _finishWait = new WaitForSeconds(1f);
         WaitForSeconds _finishText = new WaitForSeconds(0.07f * TextSpeed);
-        Vector2 initSize = _rect.sizeDelta;
+        Vector2 initSize = DialogBox.sizeDelta;
         foreach(string dialog in CurrentJoke.Dialogs)
         {
-            DialogBox.text = null;
+            DialogText.text = null;
             int layer = 0;
-            _rect.sizeDelta = initSize;
+            DialogBox.sizeDelta = initSize;
             for (int i = 0; i < dialog.Length; i++)
             {
-                DialogBox.text = dialog.Substring(0, i+1);
+                DialogText.text = dialog.Substring(0, i+1);
                 yield return _finishText;
                 if(i/24 != layer)
                 {
                     layer++;
-                    _rect.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
+                    DialogBox.sizeDelta = initSize + new Vector2(0f, 0f + layer * 50f);
                 }
             }
             yield return _finishWait;
         }
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        DialogText.text = "...";
+        DialogBox.sizeDelta = initSize;
         GameLogic.IsEndDialog = true;
         GenerateOptions(CurrentJoke.Options);
     }

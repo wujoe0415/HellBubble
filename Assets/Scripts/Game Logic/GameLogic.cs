@@ -72,7 +72,6 @@ public class GameLogic : MonoBehaviour
             while (!IsEndChoice)
                 yield return null;
             IsEndChoice= false;
-            Debug.Log("is end choice");
             Response.StartReaction(10, 5);
             yield return blank;
         }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PopManager : MonoBehaviour
 {
     public static PopManager Instance = null;
+    public JokeTeller Comedian;
 
     public PopControler LeftPopControler = null;
     public PopControler RightPopControler = null;
@@ -41,6 +42,7 @@ public class PopManager : MonoBehaviour
         LeftPopControler.Show(leftPop.Text_value, leftPop.PopType);
         RightPopControler.Show(rightPop.Text_value, rightPop.PopType);
         ButtonPopConroler.Show(b.Text_value, b.PopType);
+
     }
 
     public void Close()
@@ -53,12 +55,15 @@ public class PopManager : MonoBehaviour
         switch (popType)
         {
             case PopTypeEnum.Left:
+                Comedian.Punchline(LeftPopData.Text_value);
                 BarSystem.Instance.AddValue(LeftPopData.GoodValue, LeftPopData.BadValue);
                 break;
             case PopTypeEnum.Right:
+                Comedian.Punchline(RightPopData.Text_value);
                 BarSystem.Instance.AddValue(RightPopData.GoodValue, RightPopData.BadValue);
                 break;
             case PopTypeEnum.Button:
+                Comedian.Punchline(ButtonPopData.Text_value);
                 BarSystem.Instance.AddValue(ButtonPopData.GoodValue, ButtonPopData.BadValue);
                 break;
         }
@@ -66,9 +71,6 @@ public class PopManager : MonoBehaviour
         LeftPopControler.Hide();
         RightPopControler.Hide();
         ButtonPopConroler.Hide();
-
-        GameLogic.IsEndChoice = true;
-        Debug.Log("end choice");
     }
 
     private void Update()
