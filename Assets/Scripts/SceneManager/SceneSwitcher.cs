@@ -10,12 +10,13 @@ public class SceneSwitcher : MonoBehaviour
     public UnityEvent OnChangeScene;
     public Fade fade;
 
-    public void ChangeScene()
+    public void ChangeScene(float delay)
     {
-        StartCoroutine(Change());
+        StartCoroutine(Change(delay));
     }
-    IEnumerator Change()
+    IEnumerator Change(float delay)
     {
+        yield return new WaitForSeconds(delay);
         fade.FadeIn();
         yield return new WaitForSeconds(1.2f);
         OnChangeScene.Invoke();
