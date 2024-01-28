@@ -8,6 +8,6 @@ public class SceneStarter : MonoBehaviour
 
     private void Awake()
     {
-        FadeCanvas.FadeIn();
+        FadeCanvas.FadeOut();
     }
 }

@@ -1586,7 +1586,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1441412010}
   - component: {fileID: 1441412013}
-  - component: {fileID: 1441412011}
   - component: {fileID: 1441412012}
   m_Layer: 0
   m_Name: SceneManager
@@ -1610,19 +1609,6 @@ Transform:
   m_Father: {fileID: 518438911}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1441412011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441412009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f98f103e61e1e843a2157e051ad6553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FadeCanvas: {fileID: 1441412012}
 --- !u!114 &1441412012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1704,7 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2022,7 +2008,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
