@@ -5,21 +5,19 @@ using UnityEngine.UI;
 
 public class Judgement : MonoBehaviour
 {
-    public JokeTeller Talker;
+    public Animator DieTalkers;
     public BarSystem Bar;
     public GameObject Success;
     public Text SuccessText;
+    
+    public GameObject Fail;
     private int _thereshold = 500;
 
     private void OnEnable()
     {
         Success.SetActive(false);
-        Talker.gameObject.GetComponent<Animator>().SetBool("die", false);
-    }
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.D))
-            DiveToHell();
+        Fail.SetActive(false);
+        DieTalkers.SetBool("die", false);
     }
     public void Judge()
     {
@@ -28,6 +26,7 @@ public class Judgement : MonoBehaviour
     }
     public void DiveToHell()
     {
-        Talker.gameObject.GetComponent<Animator>().SetBool("die", true);
+        Fail.SetActive(true);
+        DieTalkers.SetBool("die", true);
     }
 }

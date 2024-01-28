@@ -18,6 +18,7 @@ public class GameLogic : MonoBehaviour
     public JokeTeller Comedian;
     public ReactionSerializer Response;
     public Alarm AlarmManager;
+    public BarSystem Bar;
 
     public UnityEvent OnStartGame;
     public UnityEvent OnHaltGame;
@@ -65,10 +66,15 @@ public class GameLogic : MonoBehaviour
     private IEnumerator GameFlow()
     {
         WaitForSeconds blank = new WaitForSeconds(1.5f);
-        while (!IsEndGame && _maxRound > _currentRound)
+        bool isHell = false;
+        while (!IsEndGame && _maxRound > _currentRound )
         {
+            if (!(Bar.GoodCurrentValue > 0))
+            {
+                isHell = true;
+                break;
+            }
             Comedian.StartJoke();
-
             while (!IsEndDialog)
                 yield return null;
             IsEndDialog= false;
@@ -81,6 +87,10 @@ public class GameLogic : MonoBehaviour
             yield return blank;
             _currentRound++;
         }
-        OnEndGame.Invoke();
+        
+        if(!isHell)
+            OnEndGame.Invoke();
+        else
+            OnHaltGame.Invoke();
     }
 }

@@ -56,7 +56,6 @@ public class Audience : MonoBehaviour
             s_Weights.Add(new WeightScore(interests.Skip(12 * i).Take(12 * (i + 1) - 1).ToArray(), insults.Skip(12 * i).Take(12 * (i + 1) - 1).ToArray()));
         }
         CurrentAudienceTag = Random.Range(0, 7);
-        Debug.Log(CurrentAudienceTag);
     }
     public static float[] InterestsWeight
     {

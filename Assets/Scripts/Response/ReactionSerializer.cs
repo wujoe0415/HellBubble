@@ -132,15 +132,15 @@ public class ReactionSerializer : MonoBehaviour
 
     public void SoundReaction(int interest, int insult)
     {
-        Clap.volume = interest / 10f;
+        Clap.volume = interest / 25f;
         Clap.Play();
 
         // if boring is bgm
-        if (interest < 5 && insult < 5)
+        if (interest < 10 && insult < 10)
             BoringBGM(0.8f);
 
 
-        Boo.volume = insult / 10;
+        Boo.volume = insult / 7f;
         Boo.Play();
     }
     public void GroupReaction(int interest, int insult)
