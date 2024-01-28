@@ -15,7 +15,7 @@ public class GameLogic : MonoBehaviour
     private bool _isPlaying = false;
 
     public JokeTeller Comedian;
-    public ResponseSerializer Response;
+    public ReactionSerializer Response;
     public Alarm AlarmManager;
 
     public UnityEvent OnStartGame;
@@ -69,7 +69,7 @@ public class GameLogic : MonoBehaviour
 
             // MakeChoice
             
-            Response.StartResponse(10, 5);
+            Response.StartReaction(10, 5);
             yield return blank;
         }
     }

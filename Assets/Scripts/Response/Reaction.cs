@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Response : MonoBehaviour
+public class Reaction : MonoBehaviour
 {
     private Image _image;
 

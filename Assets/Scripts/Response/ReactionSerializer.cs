@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-public class ResponseSerializer : MonoBehaviour
+public class ReactionSerializer : MonoBehaviour
 {
     public Transform[] Audiences;
     public Sprite[] LeftBubble;
@@ -21,115 +21,117 @@ public class ResponseSerializer : MonoBehaviour
         new Vector2(1000f, 50f),
     };
 
-    public void StartResponse(int interest, int insult)
+    public void StartReaction(int interest, int insult)
     {
         // Interest
         if(interest == 10)
         {
             for (int i = 0; i < Random.Range(0, 2); i++)
-                GenerateResponse(3);
+                GenerateReaction(3);
             for (int i = 0; i < Random.Range(4, 6); i++)
-                GenerateResponse(4);
+                GenerateReaction(4);
         }
         else if(interest >= 8)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(1, 3); i++)
-                GenerateResponse(3);
+                GenerateReaction(3);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(4);
+                GenerateReaction(4);
         }
         else if (interest >= 6)
         {
             for (int i = 0; i < Random.Range(1, 2); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(3);
+                GenerateReaction(3);
             for (int i = 0; i < Random.Range(0, 2); i++)
-                GenerateResponse(4);
+                GenerateReaction(4);
         }
         else if (interest >= 4)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(3);
+                GenerateReaction(3);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(4);
+                GenerateReaction(4);
         }
         else if (interest >= 2)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(4, 6); i++)
-                GenerateResponse(3);
+                GenerateReaction(3);
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(4);
+                GenerateReaction(4);
         }
         else
         {
             for (int i = 0; i < Random.Range(6, 8); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(3);
+                GenerateReaction(3);
         }
 
         // Insult
         if (insult == 10)
         {
             for (int i = 0; i < Random.Range(0, 2); i++)
-                GenerateResponse(1);
+                GenerateReaction(1);
             for (int i = 0; i < Random.Range(4, 6); i++)
-                GenerateResponse(2);
+                GenerateReaction(2);
         }
         else if (insult >= 8)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(1, 3); i++)
-                GenerateResponse(1);
+                GenerateReaction(1);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(2);
+                GenerateReaction(2);
         }
         else if (insult >= 6)
         {
             for (int i = 0; i < Random.Range(1, 2); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(1);
+                GenerateReaction(1);
             for (int i = 0; i < Random.Range(0, 2); i++)
-                GenerateResponse(2);
+                GenerateReaction(2);
         }
         else if (insult >= 4)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(1);
+                GenerateReaction(1);
             for (int i = 0; i < Random.Range(2, 4); i++)
-                GenerateResponse(2);
+                GenerateReaction(2);
         }
         else if (insult >= 2)
         {
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(4, 6); i++)
-                GenerateResponse(1);
+                GenerateReaction(1);
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(2);
+                GenerateReaction(2);
         }
         else
         {
             for (int i = 0; i < Random.Range(6, 8); i++)
-                GenerateResponse(0);
+                GenerateReaction(0);
             for (int i = 0; i < Random.Range(0, 1); i++)
-                GenerateResponse(1);
+                GenerateReaction(1);
         }
-        SoundReflection(interest, insult);
+        SoundReaction(interest, insult);
+        GroupReaction(interest, insult);
+        TellerReaction(interest, insult);
     }
 
-    public void SoundReflection(int interest, int insult)
+    public void SoundReaction(int interest, int insult)
     {
         Clap.volume = interest / 10f;
         Clap.Play();
@@ -142,7 +144,15 @@ public class ResponseSerializer : MonoBehaviour
         Boo.volume = insult / 10;
         Clap.Play();
     }
-    public void GenerateResponse(int res)
+    public void GroupReaction(int interest, int insult)
+    {
+
+    }
+    public void TellerReaction(int interest, int insult)
+    {
+
+    }
+    public void GenerateReaction(int res)
     {
         int index = Random.Range(0, 3);
         GameObject response = Instantiate(Response, Audiences[index]);

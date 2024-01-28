@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -49,6 +50,7 @@ public class JokeManager : MonoBehaviour
 {
     private string _filePath = "jokes";
     public List<int> ToldJokes = new List<int>();
+    private List<int> _untoldJokes = new List<int>();
 
     private ComedyData _comedyDataBase;
 
@@ -74,6 +76,11 @@ public class JokeManager : MonoBehaviour
             // Print or use the result as needed
             foreach (JokeData joke in _comedyDataBase.stand_up_comedy)
                 Debug.Log(joke.dialog);
+
+            ToldJokes.Clear();
+            _untoldJokes.Clear();
+            for (int i = 0; i < _comedyDataBase.stand_up_comedy.Length; i++)
+                _untoldJokes.Add(i);
         }
         else
             Debug.LogError("Failed to parse JSON data.");
@@ -81,14 +88,19 @@ public class JokeManager : MonoBehaviour
     }
     public Joke GetJoke()
     {
-        int index = UnityEngine.Random.Range(0, 2);
-        while(ToldJokes.Contains(index))
+        if(_untoldJokes.Count == 0)
         {
-            index = UnityEngine.Random.Range(0, 2);
-            continue;
+            Debug.LogError("You have told every joke!");
+            
+            ToldJokes.Clear();
+            _untoldJokes.Clear();
+            for (int i = 0; i < _comedyDataBase.stand_up_comedy.Length; i++)
+                _untoldJokes.Add(i);
         }
-        ToldJokes.Add(index);
-        Joke j = new Joke(_comedyDataBase.stand_up_comedy[index]);
+        int index = UnityEngine.Random.Range(0, _untoldJokes.Count);
+        ToldJokes.Add(_untoldJokes[index]);
+        Joke j = new Joke(_comedyDataBase.stand_up_comedy[_untoldJokes[index]]);
+        _untoldJokes.RemoveAt(index);
         return j;
     }
 }
