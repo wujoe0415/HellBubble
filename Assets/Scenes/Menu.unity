@@ -194,10 +194,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\"\u3010\u88FD\u4F5C\u4EBA\u54E1\u3011\n- Kevin Chang\n- \u5433\u4FCA\u6FA4\n-
-    \u9EA5\u9EA5\n- GMF\n- \u7DA0\u8449\n\n\u3010\u7279\u5225\u4F86\u8CD3\u3011\n-
-    \u8001\u5289\n- HHOOUUSSEE\n\n\u3010\u7D20\u6750\u4F7F\u7528\u3011\n- \u9F8D\u4E4B\u4EA4\u97FF\u66F2\n-
-    soundeffect-lab\n- Taipei jammer \u7684\u7F8E\u5999\u4EBA\u8072\""
+  m_Text: "\u3010\u88FD\u4F5C\u4EBA\u54E1\u3011\n  - Kevin Chang\n  - \u5433\u4FCA\u6FA4\n 
+    - \u9EA5\u9EA5\n  - GMF\n  - \u7DA0\u8449\n  - \u9ED1\u718A\n\n\u3010\u7279\u5225\u4F86\u8CD3\u3011\n 
+    - \u8001\u5289\n  - HHOOUUSSEE\n\n\u3010\u7D20\u6750\u4F7F\u7528\u3011\n  - \u9F8D\u4E4B\u4EA4\u97FF\u66F2\n 
+    - soundeffect-lab\n  - Taipei jammer \u7684\u7F8E\u5999\u4EBA\u8072\""
 --- !u!222 &33295447
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2155,7 +2155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &893002510
 RectTransform:
   m_ObjectHideFlags: 0
