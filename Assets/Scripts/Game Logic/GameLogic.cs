@@ -23,13 +23,16 @@ public class GameLogic : MonoBehaviour
     public UnityEvent OnHaltGame;
     public UnityEvent OnEndGame;
 
+    private int _currentRound = 0;
+    private int _maxRound = 7;
+
     // public Choose Choice;
     private IEnumerator _coroutine;
     public void OnEnable()
     {
         IsEndGame = false;
         IsEndDialog = false;
-    }
+}
     public void Start()
     {
         Invoke("StartGame", 2f);
@@ -37,6 +40,8 @@ public class GameLogic : MonoBehaviour
     }
     public void StartGame()
     {
+        _currentRound = 0;
+        _maxRound = 7;
         _isPlaying = true;
         AlarmManager.SetMaxValue(GameDuration);
         OnStartGame.Invoke();
@@ -60,7 +65,7 @@ public class GameLogic : MonoBehaviour
     private IEnumerator GameFlow()
     {
         WaitForSeconds blank = new WaitForSeconds(1.5f);
-        while (!IsEndGame)
+        while (!IsEndGame && _maxRound > _currentRound)
         {
             Comedian.StartJoke();
 
@@ -74,6 +79,8 @@ public class GameLogic : MonoBehaviour
             IsEndChoice= false;
             Response.StartReaction(10, 5);
             yield return blank;
+            _currentRound++;
         }
+        OnEndGame.Invoke();
     }
 }
