@@ -155,7 +155,7 @@ RectTransform:
   m_Children:
   - {fileID: 579807738}
   m_Father: {fileID: 1790201451}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -694,7 +694,7 @@ RectTransform:
   m_Children:
   - {fileID: 1142585528}
   m_Father: {fileID: 1632737116}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1252,7 +1252,7 @@ RectTransform:
   - {fileID: 1623211094}
   - {fileID: 1722772134}
   m_Father: {fileID: 1790201451}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1766,6 +1766,7 @@ RectTransform:
   m_Children:
   - {fileID: 250149175}
   - {fileID: 828471738}
+  - {fileID: 555699939}
   - {fileID: 1881075497}
   - {fileID: 692863601}
   m_Father: {fileID: 1790201451}
@@ -2046,7 +2047,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1632737116}
-  - {fileID: 555699939}
   - {fileID: 2085521949}
   - {fileID: 69268880}
   - {fileID: 1065513406}
@@ -2278,7 +2278,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1632737116}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2492,7 +2492,7 @@ RectTransform:
   - {fileID: 738942453}
   - {fileID: 275943051}
   m_Father: {fileID: 1790201451}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2631,7 +2631,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1790201451}
+    m_TransformParent: {fileID: 1632737116}
     m_Modifications:
     - target: {fileID: 6914436395629326273, guid: 27aaece8da19747f99c3090bff3aaca2, type: 3}
       propertyPath: DialogBox
@@ -2655,7 +2655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914436395629326276, guid: 27aaece8da19747f99c3090bff3aaca2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6914436395629326276, guid: 27aaece8da19747f99c3090bff3aaca2, type: 3}
       propertyPath: m_AnchorMax.x
