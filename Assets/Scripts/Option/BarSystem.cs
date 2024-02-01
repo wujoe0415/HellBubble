@@ -21,16 +21,6 @@ public class BarSystem : MonoBehaviour
     private Vector2 GoodArrowCurrentPos = Vector2.zero;
     private Vector2 BadArrowCurrentPos = Vector2.zero;
 
-    public bool Test_Reset = false;
-    public bool Test_SetChangeValue = false;
-    public int Test_AddGoodValue = 0;
-    public int Test_AddBadValue = 0;
-    public bool Test_SetMaxValue = false;
-    public int Test_SetGoodMaxValue = 100;
-    public int Test_SetBadMaxValue = 100;
-    public int Test_SetGoodStartValue = 20;
-    public int Test_SetBadStartValue = 20;
-
     private void Awake()
     {
         Instance = this;
@@ -76,27 +66,5 @@ public class BarSystem : MonoBehaviour
         BadBarImage.fillAmount = BadCurrentValue == 0 ? 0 : (float)BadCurrentValue / (float)BadMaxValue;
         GoodBarArrowImage.rectTransform.anchoredPosition = new Vector3(GoodBarArrowImage.rectTransform.anchoredPosition.x, (GoodBarImage.rectTransform.rect.height * GoodBarImage.fillAmount) + (-1 * GoodBarImage.rectTransform.rect.height / 2),  0);
         BadBarArrowImage.rectTransform.anchoredPosition = new Vector3(BadBarArrowImage.rectTransform.anchoredPosition.x, (BadBarImage.rectTransform.rect.height * BadBarImage.fillAmount) + (-1 * BadBarImage.rectTransform.rect.height / 2), 0);
-    }
-
-    public void Update()
-    {
-        if (Test_SetChangeValue)
-        {
-            Test_SetChangeValue = false;
-            AddValue(Test_AddGoodValue, Test_AddBadValue);
-        }
-
-        if (Test_SetMaxValue)
-        {
-            Test_SetMaxValue = false;
-            Setup(Test_SetGoodMaxValue, Test_SetBadMaxValue, Test_SetGoodStartValue, Test_SetBadStartValue);
-        }
-
-        if (Test_Reset)
-        {
-            Test_Reset = false;
-            Reset();
-        }
-
     }
 }

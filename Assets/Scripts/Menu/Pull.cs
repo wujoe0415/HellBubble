@@ -13,7 +13,7 @@ public class Pull : MonoBehaviour
     public void PullRob()
     {
         StartCoroutine(Trans(transform.position + new Vector3(0f, deltaY, 0f)));
-        Invoke("RecoverRob", 1f);
+        Invoke("RecoverRob", 0.25f);
     }
     public void RecoverRob()
     {
@@ -24,9 +24,9 @@ public class Pull : MonoBehaviour
         Debug.Log("in");
         Vector3 i = transform.position;
 
-        for(float f = 0;f<0.5f;f+=Time.deltaTime)
+        for(float f = 0;f<0.2f;f+=Time.deltaTime)
         {
-            transform.position = Vector3.Lerp(i, target, f / 0.5f);
+            transform.position = Vector3.Lerp(i, target, f / 0.2f);
             yield return null;
         }
     }

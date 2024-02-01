@@ -147,7 +147,10 @@ public class JokeTeller : MonoBehaviour
         List<int> arr = new List<int>{ 0,1,2,3};
         arr.RemoveAt(UnityEngine.Random.Range(0, 4));
         for (int i = 0; i < 3; i++) {
-            popDatas[i] = new PopData(options[arr[i]].Content, options[arr[i]].SatisfyAmount * Audience.InterestsWeight[(JokeManager.stringIndexMap[options[arr[i]].Tag])], options[i].DevilAmount * Audience.InsultsWeight[(JokeManager.stringIndexMap[options[i].Tag])], (PopTypeEnum)i + 1);
+            popDatas[i] = new PopData(options[arr[i]].Content, 
+                                      options[arr[i]].SatisfyAmount * Audience.InterestsWeight[(JokeManager.stringIndexMap[options[arr[i]].Tag])], 
+                                      options[arr[i]].DevilAmount * Audience.InsultsWeight[(JokeManager.stringIndexMap[options[arr[i]].Tag])], 
+                                      (PopTypeEnum)(i + 1));
             //bubble.GetComponent<OptionSerializer>().OnClick += () => { StartJoke(); };
         }
         PopManager.Instance.Show(popDatas[0], popDatas[1], popDatas[2]);

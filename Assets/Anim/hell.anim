@@ -19,40 +19,38 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 0.16666667
+    - time: 2.0833333
       value: {fileID: 21300000, guid: 4ba824d8eb2c36949b969b3835a99376, type: 3}
-    - time: 0.25
+    - time: 2.1666667
       value: {fileID: 21300000, guid: 76e0a9774c24eb9498c5103190c003fb, type: 3}
-    - time: 0.35
+    - time: 2.2666667
       value: {fileID: 21300000, guid: f911b00282369594296a564203f78ae8, type: 3}
-    - time: 0.43333334
+    - time: 2.35
       value: {fileID: 21300000, guid: bbafbf7be7b8b24448e00daa213b3509, type: 3}
-    - time: 0.55
-      value: {fileID: 21300000, guid: 772681113a7ae254da6a24accc5c30dc, type: 3}
-    - time: 0.6333333
+    - time: 2.6833334
       value: {fileID: 21300000, guid: d949743a0a082ae46bf94976cc9026fe, type: 3}
-    - time: 0.73333335
+    - time: 2.7833333
       value: {fileID: 21300000, guid: 1f4008b220ac61d448262fe00d9ef1d0, type: 3}
-    - time: 0.81666666
+    - time: 2.9
       value: {fileID: 21300000, guid: 3578ad3076b28974ca91ff5a13ad7a3f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
-    - time: 0.16666667
+    - time: 2.0833333
       value: {fileID: 21300000, guid: 52f21809eb37b954cbefc4981771f146, type: 3}
-    - time: 0.28333333
+    - time: 2.1666667
       value: {fileID: 21300000, guid: 7b8e702ae55ac6b4ebf100f702d4164f, type: 3}
-    - time: 0.38333333
+    - time: 2.2666667
       value: {fileID: 21300000, guid: f81ec1634de181f4d8ba60264a32d36d, type: 3}
-    - time: 0.5
+    - time: 2.35
       value: {fileID: 21300000, guid: 7412cc6e9b88fb442b60f52790204397, type: 3}
-    - time: 0.6
+    - time: 2.6833334
       value: {fileID: 21300000, guid: c96665c0e0eeddb429ed410cdd8c4da7, type: 3}
-    - time: 0.7
+    - time: 2.7833333
       value: {fileID: 21300000, guid: 5f62adfc28817f144b24f4bc8f020c2f, type: 3}
-    - time: 0.81666666
+    - time: 2.9
       value: {fileID: 21300000, guid: 017f9a58a0347a24aad1e7bb24657e34, type: 3}
     attribute: m_Sprite
     path: Hole
@@ -84,7 +82,6 @@ AnimationClip:
     - {fileID: 21300000, guid: 76e0a9774c24eb9498c5103190c003fb, type: 3}
     - {fileID: 21300000, guid: f911b00282369594296a564203f78ae8, type: 3}
     - {fileID: 21300000, guid: bbafbf7be7b8b24448e00daa213b3509, type: 3}
-    - {fileID: 21300000, guid: 772681113a7ae254da6a24accc5c30dc, type: 3}
     - {fileID: 21300000, guid: d949743a0a082ae46bf94976cc9026fe, type: 3}
     - {fileID: 21300000, guid: 1f4008b220ac61d448262fe00d9ef1d0, type: 3}
     - {fileID: 21300000, guid: 3578ad3076b28974ca91ff5a13ad7a3f, type: 3}
@@ -100,7 +97,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8333333
+    m_StopTime: 2.9166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

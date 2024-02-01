@@ -22,7 +22,7 @@ public class Judgement : MonoBehaviour
     public void Judge()
     {
         Success.SetActive(true);
-        SuccessText.text = "¦³½ì­È¡G" + Bar.GoodCurrentValue.ToString() + "\n¦aº»­È¡G" + Bar.BadCurrentValue.ToString();
+        SuccessText.text = "¦³½ì­È¡G" + Bar.GoodCurrentValue.ToString() + "\n«_¥Ç­È¡G" + Bar.BadCurrentValue.ToString();
     }
     public void DiveToHell()
     {

@@ -14,12 +14,7 @@ public class PopManager : MonoBehaviour
     private PopData LeftPopData = null;
     private PopData RightPopData = null;
     private PopData ButtonPopData = null;
-
-    public bool Test_ShowPop = false;
-    public PopData Test_SetLeftPopData = new PopData("Left, Good+10, Bad +10", 10, 10, PopTypeEnum.Left);
-    public PopData Test_SetRightPopData = new PopData("Right, Good-10, Bad -10", -10, -10, PopTypeEnum.Right);
-    public PopData Test_SetButtonPopData = new PopData("Button, Good-10, Bad +10", -10, 10, PopTypeEnum.Button);
-    public bool Test_HidePop = false;
+    public ReactionSerializer Reaction;
 
     private void Awake()
     {
@@ -42,7 +37,6 @@ public class PopManager : MonoBehaviour
         LeftPopControler.Show(leftPop.Text_value, leftPop.PopType);
         RightPopControler.Show(rightPop.Text_value, rightPop.PopType);
         ButtonPopConroler.Show(b.Text_value, b.PopType);
-
     }
 
     public void Close()
@@ -57,34 +51,23 @@ public class PopManager : MonoBehaviour
             case PopTypeEnum.Left:
                 Comedian.Punchline(LeftPopData.Text_value);
                 BarSystem.Instance.AddValue(LeftPopData.GoodValue, LeftPopData.BadValue);
+                Reaction.StartReaction(LeftPopData.GoodValue, LeftPopData.BadValue);
                 break;
             case PopTypeEnum.Right:
                 Comedian.Punchline(RightPopData.Text_value);
                 BarSystem.Instance.AddValue(RightPopData.GoodValue, RightPopData.BadValue);
+                Reaction.StartReaction(RightPopData.GoodValue, RightPopData.BadValue);
                 break;
             case PopTypeEnum.Button:
                 Comedian.Punchline(ButtonPopData.Text_value);
                 BarSystem.Instance.AddValue(ButtonPopData.GoodValue, ButtonPopData.BadValue);
+                Reaction.StartReaction(ButtonPopData.GoodValue, ButtonPopData.BadValue);
                 break;
         }
 
         LeftPopControler.Hide();
         RightPopControler.Hide();
         ButtonPopConroler.Hide();
-    }
-
-    private void Update()
-    {
-        if (Test_ShowPop)
-        {
-            Test_ShowPop = false;
-            Show(Test_SetLeftPopData, Test_SetRightPopData, Test_SetButtonPopData);
-        }
-        if (Test_HidePop)
-        {
-            Test_HidePop = false;
-            Close();
-        }
     }
 
     public class PopData

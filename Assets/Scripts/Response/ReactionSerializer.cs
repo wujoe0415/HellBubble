@@ -23,7 +23,7 @@ public class ReactionSerializer : MonoBehaviour
     public void StartReaction(int interest, int insult)
     {
         // Interest
-        if (interest == 10)
+        if (interest >= 10)
         {
             for (int i = 0; i < Random.Range(0, 2); i++)
                 GenerateReaction(3);
@@ -75,7 +75,7 @@ public class ReactionSerializer : MonoBehaviour
         }
 
         // Insult
-        if (insult == 10)
+        if (insult >= 10)
         {
             for (int i = 0; i < Random.Range(0, 2); i++)
                 GenerateReaction(1);

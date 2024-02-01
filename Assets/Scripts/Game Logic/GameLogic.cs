@@ -16,7 +16,6 @@ public class GameLogic : MonoBehaviour
     private bool _isPlaying = false;
 
     public JokeTeller Comedian;
-    public ReactionSerializer Response;
     public Alarm AlarmManager;
     public BarSystem Bar;
 
@@ -36,7 +35,7 @@ public class GameLogic : MonoBehaviour
 }
     public void Start()
     {
-        Invoke("StartGame", 2f);
+        Invoke("StartGame", 2.2f);
         OnEndGame.AddListener(() => { IsEndGame = true; });
     }
     public void StartGame()
@@ -83,7 +82,6 @@ public class GameLogic : MonoBehaviour
             while (!IsEndChoice)
                 yield return null;
             IsEndChoice= false;
-            Response.StartReaction(10, 5);
             yield return blank;
             _currentRound++;
         }
